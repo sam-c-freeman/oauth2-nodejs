@@ -6,6 +6,7 @@ var router = express.Router()
 
 /** /api_call **/
 router.get('/', function (req, res) {
+ //this is the Quickbook API call button route 
   var token = tools.getToken(req.session)
   if(!token) return res.json({error: 'Not authorized'})
   if(!req.session.realmId) return res.json({
