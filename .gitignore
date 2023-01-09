@@ -40,3 +40,9 @@ jspm_packages
 
 # testing not pushing config file
 config.json
+
+# dotenv environment variables file
+.env
+
+#notes to self
+CitizenKanine.MD

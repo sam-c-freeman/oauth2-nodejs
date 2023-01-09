@@ -27,6 +27,14 @@
         $("#result").html(JSON.stringify(data, null, 2))
       })
     }
+
+    function customerApiCall() {
+      $("#result").html('Loading...')
+      console.log('test api call')
+      $.get("/api_call/customer", function(data) {
+        $("#result").html(JSON.stringify(data, null, 2))
+      })
+    }
   </script>
 </head>
 <body>
@@ -38,6 +46,7 @@
     <button onclick="apiCall()">QuickBooks API Call</button>
     <button onclick="refreshCall()">Refresh Token Call</button>
     <button onclick="revokeCall()">Revoke Token Call</button>
+    <button onClick="customerApiCall()">Test Sam API Call</button>
     <br><br>
     <div><code id="result"></code></div>
 </body>

@@ -19,7 +19,6 @@ app.get('/', function (req, res) {
 app.use('/sign_in_with_intuit', require('./routes/sign_in_with_intuit.js'))
 app.use('/connect_to_quickbooks', require('./routes/connect_to_quickbooks.js'))
 app.use('/connect_handler', require('./routes/connect_handler.js'))
-
 // Callback - called via redirect_uri after authorization
 app.use('/callback', require('./routes/callback.js'))
 

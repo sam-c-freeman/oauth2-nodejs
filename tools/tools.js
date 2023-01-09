@@ -3,13 +3,16 @@ var csrf = new Tokens()
 var ClientOAuth2 = require('client-oauth2')
 var request = require('request')
 var config = require('../config.json')
+require('dotenv').config();
 
 var Tools = function () {
   var tools = this;
-
+  // console.log('environment variables?', process.env)
   var authConfig = {
-    clientId: config.clientId,
-    clientSecret: config.clientSecret,
+    // clientId: config.clientId,
+    clientId: process.env.clientId,
+    // clientSecret: config.clientSecret,
+    clientSecret: process.env.clientSecret,
     redirectUri: config.redirectUri
   }
 
@@ -62,7 +65,7 @@ var Tools = function () {
         tools.refreshTokens(req.session).then(function(newToken) {
           // Try API call again, with new accessToken
           requestObj.headers.Authorization = 'Bearer ' + newToken.accessToken
-          console.log('Trying again, making API call to: ' + requestObj.url)
+          // console.log('Trying again, making API call to: ' + requestObj.url)
           request(requestObj, function (err, response) {
             // Logic (including error checking) should be continued with new
             // err/response objects.
@@ -166,6 +169,7 @@ var Tools = function () {
 
   // Get the token object from session storage
   this.getToken = function(session) {
+    // console.log('is there a session access token?', session)
     if(!session.accessToken) return null
 
     return tools.intuitAuth.createToken(
